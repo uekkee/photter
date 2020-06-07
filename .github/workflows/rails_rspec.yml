@@ -87,3 +87,10 @@ jobs:
         env:
           RAILS_ENV: test
           HEADLESS_E2E: 1
+
+      - name: Archive rspec result screenshots
+        if: failure()
+        uses: actions/upload-artifact@v1
+        with:
+          name: rspec result screenshots
+          path: tmp/screenshots
