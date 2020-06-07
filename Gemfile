@@ -31,6 +31,8 @@ gem "slim"
 gem "sidekiq"
 
 group :development, :test do
+  gem "rspec-rails", "~> 4.0.0"
+  gem "factory_bot_rails"
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
@@ -43,4 +45,9 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem "foreman"
+end
+
+group :test do
+  gem "database_rewinder"
+  gem "shoulda-matchers"
 end
