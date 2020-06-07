@@ -34,6 +34,11 @@ jobs:
         with:
           ruby-version: 2.7.1
 
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
       - name: Cache bundle directory
         uses: actions/cache@v2
         with:
@@ -42,16 +47,32 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gem-${{ hashFiles('.ruby-version') }}-
 
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install dependencies
         run: |
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
+          yarn install
 
       - name: Verify mysql connection
         run: |
           while ! mysqladmin ping -h"127.0.0.1" -P3306 --silent; do
             sleep 1
           done
+
+      - name: Webpack
+        run: |
+          bin/webpack
+        env:
+          NODE_ENV: test
+          RAILS_ENV: test
 
       - name: Setup Database
         run: |
