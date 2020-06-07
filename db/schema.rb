@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_07_042718) do
+ActiveRecord::Schema.define(version: 2020_06_07_043036) do
+
+  create_table "image_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "image_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["image_id", "tag_id"], name: "image_tags_image_tag", unique: true
+    t.index ["image_id"], name: "index_image_tags_on_image_id"
+    t.index ["tag_id"], name: "index_image_tags_on_tag_id"
+  end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "url"
@@ -26,4 +36,6 @@ ActiveRecord::Schema.define(version: 2020_06_07_042718) do
     t.index ["name"], name: "tags_name", unique: true
   end
 
+  add_foreign_key "image_tags", "images"
+  add_foreign_key "image_tags", "tags"
 end
