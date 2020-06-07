@@ -28,10 +28,14 @@ module.exports = function(api) {
       (isProductionEnv || isDevelopmentEnv) && [
         '@babel/preset-env',
         {
-          forceAllTransforms: true,
-          useBuiltIns: 'entry',
+          targets: {
+            "edge": "17",
+            "firefox": "60",
+            "chrome": "67",
+            "safari": "11.1",
+          },
+          useBuiltIns: 'usage',
           corejs: 3,
-          modules: false,
           exclude: ['transform-typeof-symbol']
         }
       ]
