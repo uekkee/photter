@@ -2,9 +2,17 @@ doctype html
 html
   head
     title Photter
+    meta name="viewport" content="width=device-width, initial-scale=1"
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_pack_tag "application"
     = javascript_pack_tag "application"
   body
-    = yield
+    section.hero.is-dark
+      .hero-body
+        .container
+          .title Photter
+
+    .section.section
+      .container
+        = yield
