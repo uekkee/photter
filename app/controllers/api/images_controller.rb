@@ -5,8 +5,8 @@ class Api::ImagesController < ApplicationController
 
   def index
     @images = Unsplash::Searcher
-                .new(searcher_params)
-                .search
+              .new(searcher_params)
+              .search
     render json: @images
   end
 

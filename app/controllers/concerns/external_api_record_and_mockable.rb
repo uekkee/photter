@@ -4,20 +4,18 @@ module ExternalApiRecordAndMockable
   extend ActiveSupport::Concern
 
   included do
-    if vcr_enabled?
-      around_action :with_vcr
-    end
-  end 
+    around_action :with_vcr if vcr_enabled?
+  end
 
   def with_vcr
-    VCR.use_cassette "default" do
-       yield
+    VCR.use_cassette 'default' do
+      yield
     end
   end
 
   module ClassMethods
     def vcr_enabled?
-      Rails.env.development? && ENV.fetch("ENABLE_VCR", 0).to_i.positive?
+      Rails.env.development? && ENV.fetch('ENABLE_VCR', 0).to_i.positive?
     end
   end
 end

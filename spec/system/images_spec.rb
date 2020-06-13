@@ -1,10 +1,11 @@
-require "rails_helper"
+# frozen_string_literal: true
 
-describe "images", type: :system do
+require 'rails_helper'
 
+describe 'images', type: :system do
   it do
     visit images_path
 
-    expect(page).to have_content "still WIP"
+    expect(page).to have_content 'still WIP'
   end
 end

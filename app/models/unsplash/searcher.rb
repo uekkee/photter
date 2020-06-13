@@ -12,6 +12,7 @@ class Unsplash::Searcher
 
   def search
     return [] if invalid?
+
     search_from_unsplash
   end
 
@@ -20,13 +21,13 @@ class Unsplash::Searcher
   def search_from_unsplash
     Unsplash::Photo
       .search(q, page)
-      .map{|result| parse_single_result result }
+      .map { |result| parse_single_result result }
   end
 
   def parse_single_result(result)
     {
       image_url: result.urls.regular,
-      thumbnail_url: result.urls.thumb,
+      thumbnail_url: result.urls.thumb
     }
   end
 end
