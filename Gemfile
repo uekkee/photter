@@ -49,6 +49,7 @@ group :development do
   gem 'pronto', require: false
   gem 'pronto-rubocop', require: false
   gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
