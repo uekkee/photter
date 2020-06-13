@@ -1,7 +1,11 @@
 AllCops:
   TargetRubyVersion: 2.7.1
   Exclude:
+    - "app/javascript/**/*"
     - "bin/*"
-    - "node_modules/**/*"
     - "db/migrate/*"
     - "db/schema.rb"
+    - "log/*"
+    - "node_modules/**/*"
+    - "public/**/*"
+    - "vendor/**/*"
