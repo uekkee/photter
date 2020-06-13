@@ -25,17 +25,17 @@ gem 'jbuilder', '~> 2.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
-gem "slim"
-gem "sidekiq"
-gem "unsplash"
+gem 'slim'
+gem 'sidekiq'
+gem 'unsplash'
 
 group :development, :test do
-  gem "rspec-rails", "~> 4.0.0"
-  gem "factory_bot_rails"
+  gem 'rspec-rails', '~> 4.0.0'
+  gem 'factory_bot_rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem "vcr"
-  gem "webmock"
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do
@@ -45,13 +45,15 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem "foreman"
+  gem 'foreman'
+  gem 'pronto'
+  gem 'pronto-rubocop', '~> 0.3.0', require: false
 end
 
 group :test do
-  gem "capybara"
-  gem "database_rewinder"
-  gem "rails-controller-testing"
-  gem "shoulda-matchers"
-  gem "webdrivers"
+  gem 'capybara'
+  gem 'database_rewinder'
+  gem 'rails-controller-testing'
+  gem 'shoulda-matchers'
+  gem 'webdrivers'
 end

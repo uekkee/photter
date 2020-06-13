@@ -1,0 +1,7 @@
+AllCops:
+  TargetRubyVersion: 2.7.1
+  Exclude:
+    - "bin/*"
+    - "node_modules/**/*"
+    - "db/migrate/*"
+    - "db/schema.rb"
