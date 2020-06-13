@@ -47,6 +47,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'foreman'
   gem 'pronto', require: false
+  gem 'pronto-scss', require: false
   gem 'pronto-slim_lint', require: false
   gem 'pronto-rubocop', require: false
   gem 'rubocop', require: false
