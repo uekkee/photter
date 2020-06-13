@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 return unless Rails.env.development? && ENV.fetch('ENABLE_VCR', 0).to_i.positive?
 
 # if using VCR on development, we need patch for Webpacker::DevServerProxy
@@ -37,7 +39,7 @@ end
 # VCR settings for unsplash API
 VCR.configure do |config|
   config.ignore_localhost = true
-  config.default_cassette_options = { match_requests_on: [:method, :path, :query], record: :new_episodes }
+  config.default_cassette_options = { match_requests_on: %i[method path query], record: :new_episodes }
   config.cassette_library_dir = 'tmp/cassettes'
   config.hook_into :webmock
 

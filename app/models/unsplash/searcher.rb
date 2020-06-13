@@ -12,6 +12,7 @@ class Unsplash::Searcher
 
   def search
     return [] if invalid?
+
     search_from_unsplash
   end
 

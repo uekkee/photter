@@ -4,9 +4,7 @@ module ExternalApiRecordAndMockable
   extend ActiveSupport::Concern
 
   included do
-    if vcr_enabled?
-      around_action :with_vcr
-    end
+    around_action :with_vcr if vcr_enabled?
   end
 
   def with_vcr

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.configure do |config|
   config.before(:each, type: :system) do
     if ENV.fetch('HEADLESS_E2E', nil).to_i.positive?
