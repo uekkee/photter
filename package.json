@@ -13,7 +13,16 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.0.1",
     "bulma": "^0.8.2",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jest": "^23.13.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.20.0",
+    "jest": "^26.0.1",
     "webpack-dev-server": "^3.11.0"
   }
 }
