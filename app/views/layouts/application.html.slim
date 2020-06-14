@@ -7,12 +7,21 @@ html
     = csp_meta_tag
     = stylesheet_pack_tag "application"
     = javascript_pack_tag "application"
-  body
-    section.hero.is-dark
+  body.has-navbar-fixed-bottom
+    section.hero.is-dark.is-bold
       .hero-body
         .container
-          .title Photter
+          h1.title Photter
+          h2.subtitle Search images and collect into DB
+    navbar
+      .tabs
+        ul
+          li
+            a Search Images
+          li
+            a Manage DB Images
+          li
+            a Manage Tags
 
-    .section.section
-      .container
-        = yield
+    section
+      = yield

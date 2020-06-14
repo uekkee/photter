@@ -1,2 +1,7 @@
 @charset "utf-8";
 @import "~bulma/bulma";
+
+.center-cropped {
+  object-fit: cover;
+  object-position: center;
+}
