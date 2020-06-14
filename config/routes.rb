@@ -4,7 +4,7 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   resources :images, only: %i[index]
-  resource :site_design, only: :show
+  resource :site_design, only: %i[show]
 
   namespace :api, format: 'json' do
     resources :images, only: :index
