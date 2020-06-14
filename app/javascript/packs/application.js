@@ -7,6 +7,9 @@ import Rails from "@rails/ujs"
 
 import "./css/application.scss"
 
+import '@fortawesome/fontawesome-free/js/fontawesome';
+import '@fortawesome/fontawesome-free/js/solid';
+
 // require("@rails/ujs").start()
 // require("turbolinks").start()
 // require("@rails/activestorage").start()

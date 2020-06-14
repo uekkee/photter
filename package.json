@@ -2,6 +2,7 @@
   "name": "photter",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.0",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
@@ -15,7 +16,7 @@
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.0.1",
-    "bulma": "^0.8.2",
+    "bulma": "^0.9",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-import": "^2.21.2",
