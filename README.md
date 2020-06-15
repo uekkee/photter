@@ -1,27 +1,42 @@
-# README
+# Photter 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![ruby](https://github.com/uekkee/photter/workflows/ruby/badge.svg)](https://github.com/uekkee/photter/actions)
+[![pronto](https://github.com/uekkee/photter/workflows/Pronto/badge.svg)](https://github.com/uekkee/photter/actions)
 
-Things you may want to cover:
+## Overview
 
-* Ruby version
+- Required languages and Packaging frameworks
+  - Ruby: 2.7.1+
+  - Bundler: 2.1.4  
+  - Node: 12.x
+  - yarn: 1.22.4+
 
-* System dependencies
+- System dependencies
+  - Docker (Every middlewares run with docker-compose!)
+  - Mysql 8
+  - Redis 6.0
 
-* Configuration
+## How to set up
 
-* Database creation
+- Configuration
+  - bundle install
+  - yarn install
+  - Unsplash API settings (see below)
 
-* Database initialization
+- Running required processes
+  - foreman start
+    - runs mysql and redis via docker-compose
+    - runs webpack-dev-server
+    - runs sidekiq
 
-* How to run the test suite
+- Database creation
+  - rails db:create
 
-* Services (job queues, cache servers, search engines, etc.)
+- Database initialization
+  - rails db:migrate
 
-* Deployment instructions
-
-* ...
+- How to run the test suite
+  - rspec
 
 
 ## Unsplash API settings
