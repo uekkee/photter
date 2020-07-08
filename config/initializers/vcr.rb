@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
-return unless Rails.env.development? && ENV.fetch('ENABLE_VCR', 0).to_i.positive?
+unless Rails.env.test? || (Rails.env.development? && ENV.fetch('ENABLE_VCR', 0).to_i.positive?)
+  VCR.turn_off!
+  return
+end
 
 # if using VCR on development, we need patch for Webpacker::DevServerProxy
 # see: https://github.com/rails/webpacker/issues/1474#issuecomment-498502741
