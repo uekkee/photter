@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-unless Rails.env.test? || (Rails.env.development? && ENV.fetch('ENABLE_VCR', 0).to_i.positive?)
+return unless Rails.env.development?
+
+if ENV.fetch('ENABLE_VCR', 0).to_i.zero?
   VCR.turn_off!
   return
 end
