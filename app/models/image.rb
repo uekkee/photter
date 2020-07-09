@@ -2,5 +2,7 @@
 
 class Image < ApplicationRecord
   has_many :image_tags, inverse_of: :image, dependent: :delete_all
-  has_many :tags, through: :image_tags
+  has_many :tags, through: :image_tags, inverse_of: :images
+
+  validates :url, presence: true, url: true, uniqueness: { case_sensitive: true }
 end
