@@ -20,7 +20,7 @@ class Unsplash::Searcher
 
   def search_from_unsplash
     Unsplash::Photo
-      .search(q, page)
+      .search(q, page, 30)
       .map { |result| parse_single_result result }
   end
 

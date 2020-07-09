@@ -16,7 +16,7 @@ describe Api::ImagesController, type: :controller do
       let(:params) { { q: 'dog', page: '1' } }
       it do
         expect(subject).to have_http_status :ok
-        expect(assigns(:images).count).to eq 10
+        expect(assigns(:images).count).to eq 30
       end
     end
 
