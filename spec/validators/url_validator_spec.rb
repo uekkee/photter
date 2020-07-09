@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe UrlValidator, type: :model do
   subject { model_class.new(url) }
