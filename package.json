@@ -16,6 +16,7 @@
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.0.1",
     "bulma": "^0.9",
+    "core-js": "3",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-import": "^2.21.2",
