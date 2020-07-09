@@ -1,0 +1,37 @@
+#take-modal.modal.px-2.py-2[
+  data-controller="image-take-dialog"
+  data-target="image-list.takeModal"
+  ]
+  .modal-background data-action="click->image-take-dialog#close"
+  .modal-card
+    .modal-card-head
+      p.modal-card-title Take image-URL(s) into DB
+    .modal-card-body
+      .container.my-2
+        strong You choose image(s) below
+      .column.is-one-fifth.is-hidden data-target="image-take-dialog.imageColumnTemplate"
+        figure.image.is-1by1
+          img.js-image.center-cropped
+      .container.my-2
+        .columns.is-multiline.is-mobile data-target="image-take-dialog.imageListParent"
+      .container.my-2
+        strong What tag(s) you want?
+        .container.my-2
+          .field
+            p.control
+              input.input.is-medium[
+                type="text" placeholder="input word and enter"
+                data-target="image-take-dialog.tagInput"
+                data-action="change->image-take-dialog#enterTag"
+              ]
+        span.tag.is-info.is-hidden[
+          data-target="image-take-dialog.tagTemplate"
+          data-controller="image-tag"
+        ]
+          span data-target="image-tag.tagTextContent"
+          a.delete data-action="click->image-tag#delete"
+        .container.tags.are-medium.my-2 data-target="image-take-dialog.tagListParent"
+    .modal-card-foot
+      .container.has-text-centered
+        button.button.is-primary.is-medium data-action="click->image-take-dialog#submit"
+          | Take!
