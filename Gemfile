@@ -49,12 +49,12 @@ group :development do
   gem 'pronto', require: false
   gem 'pronto-brakeman', require: false
   gem 'pronto-eslint_npm', require: false
-  gem 'pronto-scss', require: false
-  gem 'pronto-slim_lint', require: false
   gem 'pronto-rails_best_practices', require: false
   gem 'pronto-reek', require: false
   gem 'pronto-rubocop', require: false
-  # TODO fix ref if released: https://github.com/flyerhzm/rails_best_practices/pull/379
+  gem 'pronto-scss', require: false
+  gem 'pronto-slim_lint', require: false
+  # TODO: fix ref if released: https://github.com/flyerhzm/rails_best_practices/pull/379
   gem 'rails_best_practices', github: 'flyerhzm/rails_best_practices', ref: '22bffacca75edc102eaa459dffad5fd97e2ae159', require: false
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
