@@ -15,7 +15,7 @@ describe 'images', type: :system do
   let(:tag_names) { %w[dog puppy] }
 
   it 'search images and register single image' do
-    visit images_path
+    visit image_searches_path
 
     fill_in with: "dog\n"
 
@@ -39,7 +39,7 @@ describe 'images', type: :system do
   end
 
   it 'search images and register images' do
-    visit images_path
+    visit image_searches_path
 
     fill_in with: "dog\n"
 
