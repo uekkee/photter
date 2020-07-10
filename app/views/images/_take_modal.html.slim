@@ -34,5 +34,7 @@
       .notification data-target="image-take-dialog.notification"
     .modal-card-foot
       .container.has-text-centered
-        button.button.is-primary.is-medium data-target="image-take-dialog.submitButton" data-action="click->image-take-dialog#submit"
+        button.button.is-primary.is-medium[
+         data-target="image-take-dialog.submitButton" data-action="click->image-take-dialog#submit"
+        ]
           | Take!

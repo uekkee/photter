@@ -1,5 +1,5 @@
 import { Controller } from 'stimulus'
-import Rails from "@rails/ujs"
+import Rails from '@rails/ujs'
 
 export default class ImageTakeDialogController extends Controller {
   static targets =
@@ -40,17 +40,17 @@ export default class ImageTakeDialogController extends Controller {
       headers: {
         'X-CSRF-Token': Rails.csrfToken(),
       },
-      body: body,
+      body,
     })
 
-    if(!response.ok) {
+    if (!response.ok) {
       this.showNotification('Failure! Please ask support', true)
       throw new Error()
     }
 
     this.showNotification('Succeeded! It may take a few seconds to applying to our DB')
 
-    setTimeout(()=> {
+    setTimeout(() => {
       this.close()
     }, 3000)
   }

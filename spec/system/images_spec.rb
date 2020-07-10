@@ -10,7 +10,7 @@ describe 'images', type: :system do
   end
 
   let(:expected_image_url) do
-    "https://images.unsplash.com/photo-1534361960057-19889db9621e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjE0MDY5OX0&utm_source=photter-demo&utm_medium=referral&utm_campaign=api-credit"
+    'https://images.unsplash.com/photo-1534361960057-19889db9621e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjE0MDY5OX0&utm_source=photter-demo&utm_medium=referral&utm_campaign=api-credit'
   end
   let(:tag_names) { %w[dog puppy] }
 
@@ -33,7 +33,7 @@ describe 'images', type: :system do
     end
 
     expect(RegisterImageWithTagsJob).to have_been_enqueued
-                                          .with(image_url: expected_image_url, tag_names: tag_names)
+      .with(image_url: expected_image_url, tag_names: tag_names)
   end
 
   it 'search images and register images' do
