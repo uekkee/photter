@@ -2,7 +2,7 @@ import { Controller } from 'stimulus'
 import Rails from "@rails/ujs"
 
 export default class ImageTakeDialogController extends Controller {
-  static targets = ['imageListParent', 'imageColumnTemplate', 'tagInput', 'tagListParent', 'tagTemplate', 'tagElement']
+  static targets = ['imageListParent', 'imageColumnTemplate', 'tagInput', 'tagListParent', 'tagTemplate', 'tagElement', 'submitButton']
 
   pushImageUrls(imageUrls) {
     this.imageUrls = imageUrls
@@ -18,6 +18,8 @@ export default class ImageTakeDialogController extends Controller {
   }
 
   async submit() {
+    this.submitButtonTarget.classList.add('is-loading')
+
     const body = new FormData()
     this.imageUrls.forEach((imageUrl) => body.append('bulk_register[image_urls][]', imageUrl))
     this.tags.forEach((tag) => body.append('bulk_register[tag_names][]', tag))
@@ -33,6 +35,9 @@ export default class ImageTakeDialogController extends Controller {
     })
 
     if(!response.ok) throw new Error()
+
+    this.close()
+    this.submitButtonTarget.classList.remove('is-loading')
   }
 
   close() {
