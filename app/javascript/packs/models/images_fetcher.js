@@ -1,4 +1,4 @@
-export default class ImageFetcher {
+export default class ImagesFetcher {
   constructor(query) {
     this._query = query
     this._nextPage = 1

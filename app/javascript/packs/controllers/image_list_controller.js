@@ -1,5 +1,5 @@
 import { Controller } from 'stimulus'
-import ImageFetcher from '../models/images_fetcher'
+import ImagesFetcher from '../models/images_fetcher'
 
 export default class ImageListController extends Controller {
   static targets =
@@ -17,7 +17,7 @@ export default class ImageListController extends Controller {
 
     this.listParentTarget.textContent = ''
     this.prosessing = false
-    this._imageFetcher = new ImageFetcher(query)
+    this._imageFetcher = new ImagesFetcher(query)
     this.fetchNextImages()
   }
 
