@@ -1,33 +1,41 @@
 import { Controller } from 'stimulus'
+import ImageFetcher from '../models/images_fetcher'
 
 export default class ImageListController extends Controller {
-  static targets = ['listParent', 'imageColumnTemplate', 'imageColumn', 'takeModal', 'takeModalNav']
+  static targets =
+    [
+      'queryInput',
+      'listParent', 'imageColumnTemplate', 'imageColumn',
+      'takeModal', 'takeModalNav',
+      'apiErrorNotification',
+    ]
 
-  connect() {
+  queryInput() {
+    this.apiErrorNotificationTarget.classList.add('is-hidden')
+    const query = this.queryInputTarget.value
+    if (!query) return
+
+    this.listParentTarget.textContent = ''
     this.prosessing = false
-    this.fetchImages()
+    this._imageFetcher = new ImageFetcher(query)
+    this.fetchNextImages()
   }
 
-  async fetchImages() {
-    if (this.prosessing) return
+  fetchNextImages() {
+    if (this.prosessing || !this._imageFetcher.hasNext) return
 
     this.prosessing = true
 
-    const response = await fetch('/api/images?q=dog', {
-      method: 'GET',
-      credentials: 'same-origin',
-      headers: {
-        Accept: 'application/json',
-      },
-    })
-
-    if (!response.ok) throw new Error()
-
-    const json = await response.json()
-
-    json.forEach((record) => this.buildImageColumn(record.image_url, record.thumbnail_url))
-
-    this.prosessing = false
+    this._imageFetcher.fetchNext()
+      .then((images) => {
+        images.forEach((record) => this.buildImageColumn(record.image_url, record.thumbnail_url))
+      })
+      .catch(() => {
+        this.apiErrorNotificationTarget.classList.remove('is-hidden')
+      })
+      .finally(() => {
+        this.prosessing = false
+      })
   }
 
   showOrHideTakeModalNav() {
@@ -45,7 +53,7 @@ export default class ImageListController extends Controller {
 
   fetchIfScrollAlmostEnd() {
     const scrollablePixels = document.body.offsetHeight - window.scrollY - window.innerHeight
-    if (scrollablePixels < 300) this.fetchImages()
+    if (scrollablePixels < 300) this.fetchNextImages()
   }
 
   get checkedImageUrls() {
