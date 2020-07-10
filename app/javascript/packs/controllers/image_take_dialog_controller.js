@@ -2,7 +2,17 @@ import { Controller } from 'stimulus'
 import Rails from "@rails/ujs"
 
 export default class ImageTakeDialogController extends Controller {
-  static targets = ['imageListParent', 'imageColumnTemplate', 'tagInput', 'tagListParent', 'tagTemplate', 'tagElement', 'submitButton']
+  static targets =
+    ['imageListParent', 'imageColumnTemplate',
+      'tagInput', 'tagListParent', 'tagTemplate', 'tagElement',
+      'notification', 'submitButton']
+
+  show() {
+    this.submitButtonTarget.classList.remove('is-loading')
+    this.notificationTarget.classList.add('is-hidden')
+    this.notificationTarget.classList.remove('is-danger')
+    this.element.classList.add('is-active')
+  }
 
   pushImageUrls(imageUrls) {
     this.imageUrls = imageUrls
@@ -28,16 +38,27 @@ export default class ImageTakeDialogController extends Controller {
       method: 'POST',
       credentials: 'same-origin',
       headers: {
-        Accept: 'application/json',
         'X-CSRF-Token': Rails.csrfToken(),
       },
       body: body,
     })
 
-    if(!response.ok) throw new Error()
+    if(!response.ok) {
+      this.showNotification('Failure! Please ask support', true)
+      throw new Error()
+    }
 
-    this.close()
-    this.submitButtonTarget.classList.remove('is-loading')
+    this.showNotification('Succeeded! It may take a few seconds to applying to our DB')
+
+    setTimeout(()=> {
+      this.close()
+    }, 3000)
+  }
+
+  showNotification(message, danger = false) {
+    this.notificationTarget.textContent = message
+    if (danger) this.notificationTarget.classList.add('is-danger')
+    this.notificationTarget.classList.remove('is-hidden')
   }
 
   close() {
