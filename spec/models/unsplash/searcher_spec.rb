@@ -14,12 +14,20 @@ describe Unsplash::Searcher, type: :model do
 
     context 'with valid params' do
       let(:params) { { q: 'dog', page: '1' } }
-      it { expect(subject.count).to eq 30 }
+      it do
+        expect(subject.images.count).to eq 30
+        expect(subject.total).to eq 21_069
+        expect(subject.total_pages).to eq 703
+      end
     end
 
     context 'with invalid params' do
       let(:params) { {} }
-      it { expect(subject.count).to be_zero }
+      it do
+        expect(subject.images).to be_empty
+        expect(subject.total).to be_zero
+        expect(subject.total_pages).to be_zero
+      end
     end
   end
 end

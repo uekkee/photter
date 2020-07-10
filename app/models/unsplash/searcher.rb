@@ -11,17 +11,25 @@ class Unsplash::Searcher
   validates :page, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
   def search
-    return [] if invalid?
-
-    search_from_unsplash
+    search_result = search_from_unsplash if valid?
+    build_result_object search_result
   end
 
   private
 
+  def build_result_object(search_result)
+    OpenStruct.new(
+      {
+        total: search_result&.total || 0,
+        total_pages: search_result&.total_pages || 0,
+        images: search_result&.map { |result| parse_single_result result } || []
+      }
+    )
+  end
+
   def search_from_unsplash
     Unsplash::Photo
       .search(q, page, 30)
-      .map { |result| parse_single_result result }
   end
 
   def parse_single_result(result)

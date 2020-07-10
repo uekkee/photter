@@ -4,10 +4,9 @@ class Api::ImagesController < ApplicationController
   include ExternalApiRecordAndMockable
 
   def index
-    @images = Unsplash::Searcher
-              .new(searcher_params)
-              .search
-    render json: @images
+    @search_result = Unsplash::Searcher
+                     .new(searcher_params)
+                     .search
   end
 
   private
