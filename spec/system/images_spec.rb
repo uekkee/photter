@@ -17,6 +17,8 @@ describe 'images', type: :system do
   it 'search images and register single image' do
     visit images_path
 
+    fill_in with: "dog\n"
+
     # select images
     all('figure.image')[0].click
 
@@ -38,6 +40,8 @@ describe 'images', type: :system do
 
   it 'search images and register images' do
     visit images_path
+
+    fill_in with: "dog\n"
 
     # select images
     all('figure.image')[0].click
