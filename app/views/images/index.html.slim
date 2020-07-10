@@ -2,10 +2,17 @@ main data-controller="image-list" data-action="scroll@window->image-list#fetchIf
   = render 'image_column'
 
   .container.mx-4.my-4
-    input.input.is-medium type="text" placeholder="Type search keywords and enter"
+    input.input.is-medium[
+      type="text"
+      data-target="image-list.queryInput"
+      data-action="change->image-list#queryInput"
+      placeholder="Type search keywords and enter"
+    ]
 
   .container.mx-2.my-2
     .columns.is-multiline.is-mobile data-target="image-list.listParent"
+    .notification.is-danger.is-hidden data-target="image-list.apiErrorNotification"
+     | failed to search! Check your Unsplash API secret settings
 
   nav.navbar.is-fixed-bottom.is-hidden data-target="image-list.takeModalNav"
     .container.my-2.has-text-centered
