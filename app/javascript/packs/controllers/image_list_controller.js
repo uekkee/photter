@@ -39,8 +39,8 @@ export default class ImageListController extends Controller {
   }
 
   showTakeDialog() {
-    this.imageTakeDialogController().pushImageUrls(this.checkedImageUrls)
-    this.takeModalTarget.classList.add('is-active')
+    this.imageTakeDialogController.pushImageUrls(this.checkedImageUrls)
+    this.imageTakeDialogController.show()
   }
 
   fetchIfScrollAlmostEnd() {
@@ -60,7 +60,7 @@ export default class ImageListController extends Controller {
     return this.application.getControllerForElementAndIdentifier(element, 'image-column')
   }
 
-  imageTakeDialogController() {
+  get imageTakeDialogController() {
     return this.application.getControllerForElementAndIdentifier(this.takeModalTarget, 'image-take-dialog')
   }
 
