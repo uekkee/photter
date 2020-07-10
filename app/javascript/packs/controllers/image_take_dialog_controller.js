@@ -1,5 +1,5 @@
 import { Controller } from 'stimulus'
-import Rails from '@rails/ujs'
+import ImagesRegister from '../models/images_register'
 
 export default class ImageTakeDialogController extends Controller {
   static targets =
@@ -27,32 +27,20 @@ export default class ImageTakeDialogController extends Controller {
     }
   }
 
-  async submit() {
+  submit() {
     this.submitButtonTarget.classList.add('is-loading')
 
-    const body = new FormData()
-    this.imageUrls.forEach((imageUrl) => body.append('bulk_register[image_urls][]', imageUrl))
-    this.tags.forEach((tag) => body.append('bulk_register[tag_names][]', tag))
-
-    const response = await fetch('/bulk_register_image', {
-      method: 'POST',
-      credentials: 'same-origin',
-      headers: {
-        'X-CSRF-Token': Rails.csrfToken(),
-      },
-      body,
-    })
-
-    if (!response.ok) {
-      this.showNotification('Failure! Please ask support', true)
-      throw new Error()
-    }
-
-    this.showNotification('Succeeded! It may take a few seconds to applying to our DB')
-
-    setTimeout(() => {
-      this.close()
-    }, 3000)
+    new ImagesRegister(this.imageUrls, this.tags)
+      .register()
+      .then(() => {
+        this.showNotification('Succeeded! It may take a few seconds to applying to our DB')
+        setTimeout(() => {
+          this.close()
+        }, 3000)
+      })
+      .catch(() => {
+        this.showNotification('Failure! Please ask support', true)
+      })
   }
 
   showNotification(message, danger = false) {
