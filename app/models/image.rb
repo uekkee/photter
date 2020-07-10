@@ -12,7 +12,7 @@ class Image < ApplicationRecord
 
   class << self
     def register_with_tag_names(image_url:, tag_names: [])
-      image = self.find_or_initialize_by(url: image_url)
+      image = find_or_initialize_by(url: image_url)
       image.apply_tags_by_name tag_names
       image.tap(&:save!)
     end

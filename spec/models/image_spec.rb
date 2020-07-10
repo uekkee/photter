@@ -14,14 +14,14 @@ describe Image, type: :model do
     it { is_expected.to validate_url_of(:url) }
   end
 
-  describe "#apply_tags_by_name" do
+  describe '#apply_tags_by_name' do
     subject { image.apply_tags_by_name tag_names }
 
     let(:image) { create :image }
-    let(:tag_names) { %w(dog pretty puppy) }
+    let(:tag_names) { %w[dog pretty puppy] }
     let!(:exist_tag) { create :tag, name: 'dog' }
 
-    context "image without tag" do
+    context 'image without tag' do
       it do
         subject
         expect(image.tags).to include exist_tag
@@ -32,7 +32,7 @@ describe Image, type: :model do
       end
     end
 
-    context "image with tag" do
+    context 'image with tag' do
       let(:image) { create :image, tags: [bird_tag] }
       let(:bird_tag) { create :tag, name: 'bird' }
       it 'tags are overwritten' do
@@ -43,11 +43,11 @@ describe Image, type: :model do
     end
   end
 
-  describe ".register_with_tag_names" do
+  describe '.register_with_tag_names' do
     subject { Image.register_with_tag_names image_url: image_url, tag_names: tag_names }
 
     let(:image_url) { 'https://localhost.localdomain/dog.jpg' }
-    let(:tag_names) { %w(cat cool kitty) }
+    let(:tag_names) { %w[cat cool kitty] }
 
     context 'no same image_url' do
       it do
