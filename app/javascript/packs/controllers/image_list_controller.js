@@ -22,7 +22,7 @@ export default class ImageListController extends Controller {
   }
 
   fetchNextImages() {
-    if (this.prosessing || !this._imageFetcher.hasNext) return
+    if (this.prosessing || !this._imageFetcher || !this._imageFetcher.hasNext) return
 
     this.prosessing = true
 
