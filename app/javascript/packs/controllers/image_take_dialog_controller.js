@@ -1,4 +1,5 @@
 import { Controller } from 'stimulus'
+import Rails from "@rails/ujs"
 
 export default class ImageTakeDialogController extends Controller {
   static targets = ['imageListParent', 'imageColumnTemplate', 'tagInput', 'tagListParent', 'tagTemplate', 'tagElement']
@@ -14,6 +15,24 @@ export default class ImageTakeDialogController extends Controller {
       this.buildTag(tagName)
       this.tagInputTarget.value = ''
     }
+  }
+
+  async submit() {
+    const body = new FormData()
+    this.imageUrls.forEach((imageUrl) => body.append('bulk_register[image_urls][]', imageUrl))
+    this.tags.forEach((tag) => body.append('bulk_register[tag_names][]', tag))
+
+    const response = await fetch('/bulk_register_image', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: {
+        Accept: 'application/json',
+        'X-CSRF-Token': Rails.csrfToken(),
+      },
+      body: body,
+    })
+
+    if(!response.ok) throw new Error()
   }
 
   close() {
