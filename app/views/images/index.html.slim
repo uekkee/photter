@@ -1,0 +1,36 @@
+.main
+  .container.mx-4.my-4
+    = form_with(url: images_path, method: :get, local: true) do
+      = text_field_tag :q, params[:q], class: 'input input is-medium', placeholder: 'what?'
+
+  - if flash[:notice].present?
+    .container.mx-4.my-4
+      .notification = flash[:notice]
+  .container.mx-4.my-4
+    .container.my-2
+      strong = page_entries_info @images, entry_name: 'Image'
+
+    = paginate @images
+
+    table.table.is-striped.is-fullwidth
+      thead
+        th id
+        th image
+        th tags
+        th menu
+      tbody
+        - @images.each do |image|
+          tr
+            td = image.id
+            td
+              figure.image.is-1by1
+                img.js-image.center-cropped src="#{image.url}"
+            td
+              .container.tags.are-medium.my-2
+                - image.tags.each do |tag|
+                  span.tag.is-info = tag.name
+            td
+              = link_to image_path(image), method: :delete, data: { confirm: 'Are you shoure?' } do
+                button.button.is-danger delete
+
+    = paginate @images
