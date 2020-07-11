@@ -33,8 +33,19 @@
               .container.tags.are-medium.my-2
                 - image.tags.each do |tag|
                   span.tag.is-info = tag.name
+
             td
+              .container.my-2[
+                data-controller="change-image-tags"
+                data-change-image-tags-image-url=image.url
+              ]
+                - image.tags.each do |tag|
+                  input type="hidden" value=tag.name data-target="change-image-tags.tag"
+                button.button.is-primary data-action="click->change-image-tags#showTakeDialog"
+                  | manage tags
               = link_to image_path(image), method: :delete, data: { confirm: 'Are you shoure?' } do
                 button.button.is-danger delete
 
     = paginate @images
+
+    = render '/take_dialog', target: ''

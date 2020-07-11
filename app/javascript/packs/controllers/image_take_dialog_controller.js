@@ -55,6 +55,7 @@ export default class ImageTakeDialogController extends Controller {
   close() {
     this.element.classList.remove('is-active')
     this.imageListParentTarget.textContent = ''
+    this.tagListParentTarget.textContent = ''
   }
 
   get tags() {
