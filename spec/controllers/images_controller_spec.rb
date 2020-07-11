@@ -46,6 +46,22 @@ describe ImagesController, type: :controller do
         expect(assigns(:images)).to be_empty
       end
     end
+
+    context 'csv' do
+      let(:params) { { format: :csv } }
+      let!(:image) { create :image, tags: tags }
+      let(:tags) { create_list :tag, 2 }
+
+      it do
+        expect(controller).to receive(:send_data) do |csv_body|
+          expect(csv_body).to include image.url
+          expect(csv_body).to include tags.map(&:name).join(',')
+          controller.head :ok
+        end
+
+        expect(subject).to have_http_status :ok
+      end
+    end
   end
 
   describe '#destroy' do
