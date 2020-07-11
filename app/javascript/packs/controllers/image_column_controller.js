@@ -30,7 +30,7 @@ export default class ImageColumnController extends Controller {
 
   build() {
     if (this._thumbnailUrl) {
-      this.thumbnailImgTagTarget.src = this._thumbnailUrl
+      this.thumbnailImgTagTarget.dataset.src = this._thumbnailUrl
       this.element.classList.remove('is-hidden')
     }
   }
