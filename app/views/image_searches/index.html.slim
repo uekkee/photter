@@ -19,4 +19,4 @@ main data-controller="image-list" data-action="scroll@window->image-list#fetchIf
       button.button.is-primary.is-medium data-action="click->image-list#showTakeDialog"
         | Take selected image(s) into DB!
 
-  = render 'take_modal'
+  = render '/take_dialog', target: 'image-list.takeModal'
