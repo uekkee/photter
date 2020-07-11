@@ -3,6 +3,10 @@
 [![ruby](https://github.com/uekkee/photter/workflows/ruby/badge.svg)](https://github.com/uekkee/photter/actions)
 [![pronto](https://github.com/uekkee/photter/workflows/Pronto/badge.svg)](https://github.com/uekkee/photter/actions)
 
+[![Photter demo](http://img.youtube.com/vi/NYZpJHSPhPU/0.jpg)](http://www.youtube.com/watch?v=NYZpJHSPhPU "Photter demo")
+
+You can see the DEMO MOVIE by clicking image above!
+ 
 ## Overview
 
 - Required languages and Packaging frameworks
