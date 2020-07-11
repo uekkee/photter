@@ -21,7 +21,7 @@ describe Tag, type: :model do
       let(:match_records) do
         [
           create(:tag, name: 'hotdogs'),
-          create(:tag, name: 'catalina')
+          create(:tag, name: 'catalina'),
         ]
       end
       let(:not_match_record) { create :tag, name: 'bird' }

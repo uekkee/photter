@@ -11,7 +11,7 @@ describe ImagesController, type: :controller do
       let(:match_records) do
         [
           create(:image, tags: [create(:tag, name: 'hotdogs')]),
-          create(:image, tags: [create(:tag, name: 'catalina')])
+          create(:image, tags: [create(:tag, name: 'catalina')]),
         ]
       end
       let(:not_match_record) { create :image, tags: [create(:tag, name: 'bird')] }

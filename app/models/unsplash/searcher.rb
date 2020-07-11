@@ -22,8 +22,8 @@ class Unsplash::Searcher
       {
         total: search_result&.total || 0,
         total_pages: search_result&.total_pages || 0,
-        images: search_result&.map { |result| parse_single_result result } || []
-      }
+        images: search_result&.map { |result| parse_single_result result } || [],
+      },
     )
   end
 
@@ -35,7 +35,7 @@ class Unsplash::Searcher
   def parse_single_result(result)
     {
       image_url: result.urls.regular,
-      thumbnail_url: result.urls.thumb
+      thumbnail_url: result.urls.thumb,
     }
   end
 end
