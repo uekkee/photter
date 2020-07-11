@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   resources :image_searches, only: %i[index]
   resources :images, only: %i[index destroy]
   resources :tags, only: %i[index destroy]
-  resource :site_design, only: %i[show]
   resource :bulk_register_image, only: %i[create]
 
   namespace :api, format: 'json' do
