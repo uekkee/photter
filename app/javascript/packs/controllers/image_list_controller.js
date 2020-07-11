@@ -6,7 +6,7 @@ export default class ImageListController extends Controller {
     [
       'queryInput',
       'listParent', 'imageColumnTemplate', 'imageColumn',
-      'takeModal', 'takeModalNav',
+      'takeModalNav',
       'apiErrorNotification',
     ]
 
@@ -69,7 +69,8 @@ export default class ImageListController extends Controller {
   }
 
   get imageTakeDialogController() {
-    return this.application.getControllerForElementAndIdentifier(this.takeModalTarget, 'image-take-dialog')
+    const dialogElement = document.getElementById('take-dialog')
+    return this.application.getControllerForElementAndIdentifier(dialogElement, 'image-take-dialog')
   }
 
   buildImageColumn(imageUrl, thumbnailUrl) {
