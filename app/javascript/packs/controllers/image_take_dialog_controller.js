@@ -20,7 +20,10 @@ export default class ImageTakeDialogController extends Controller {
   }
 
   enterTag() {
-    const tagName = this.tagInputTarget.value
+    this.pushTag(this.tagInputTarget.value)
+  }
+
+  pushTag(tagName) {
     if (tagName) {
       this.buildTag(tagName)
       this.tagInputTarget.value = ''
