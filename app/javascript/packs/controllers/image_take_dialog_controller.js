@@ -14,6 +14,10 @@ export default class ImageTakeDialogController extends Controller {
     this.element.classList.add('is-active')
   }
 
+  applySuccessCallback(func) {
+    this._successCallback = func
+  }
+
   pushImageUrls(imageUrls) {
     this.imageUrls = imageUrls
     imageUrls.forEach((imageUrl) => this.buildImage(imageUrl))
@@ -38,7 +42,8 @@ export default class ImageTakeDialogController extends Controller {
       .then(() => {
         this.showNotification('Succeeded! It may take a few seconds to applying to our DB')
         setTimeout(() => {
-          this.close()
+          if (this._successCallback) this._successCallback()
+          else this.close()
         }, 3000)
       })
       .catch(() => {

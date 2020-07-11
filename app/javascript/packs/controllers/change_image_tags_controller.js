@@ -11,9 +11,12 @@ export default class ChangeImageTagsController extends Controller {
   }
 
   showTakeDialog() {
-    this.imageTakeDialogController.pushImageUrls([this._imageUrl])
-    this.tagTargets.forEach((tag) => this.imageTakeDialogController.pushTag(tag.value))
-    this.imageTakeDialogController.show()
+    const imageTakeDialogController = this.imageTakeDialogController
+
+    imageTakeDialogController.pushImageUrls([this._imageUrl])
+    this.tagTargets.forEach((tag) => imageTakeDialogController.pushTag(tag.value))
+    imageTakeDialogController.applySuccessCallback(() => location.reload())
+    imageTakeDialogController.show()
   }
 
   get imageTakeDialogController() {
