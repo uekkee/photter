@@ -2,10 +2,10 @@
 
 class ImagesController < ApplicationController
   def index
-    @images = match_images
-              .order(:id)
-              .preload(:tags)
-              .page(params[:page])
+    respond_to do |format|
+      format.html { render_images_html }
+      format.csv { render_csv }
+    end
   end
 
   def destroy
@@ -22,9 +22,27 @@ class ImagesController < ApplicationController
         .distinct
         .joins(:tags)
         .merge(Tag.name_like(keywords))
+        .order(:id)
     else
       Image.all
     end
+  end
+
+  def render_images_html
+    @images = match_images
+                .preload(:tags)
+                .page(params[:page])
+  end
+
+  def render_csv
+    csv_data = CSV.generate(write_headers: true) do |csv|
+      csv << %w(url tags)
+      match_images.preload(:tags).each do |image|
+        csv << [image.url, image.tags.map(&:name).join(',')]
+      end
+    end
+
+    send_data csv_data, filename: 'images.csv'
   end
 
   def image
