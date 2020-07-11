@@ -30,13 +30,13 @@ class ImagesController < ApplicationController
 
   def render_images_html
     @images = match_images
-                .preload(:tags)
-                .page(params[:page])
+              .preload(:tags)
+              .page(params[:page])
   end
 
   def render_csv
     csv_data = CSV.generate(write_headers: true) do |csv|
-      csv << %w(url tags)
+      csv << %w[url tags]
       match_images.preload(:tags).each do |image|
         csv << [image.url, image.tags.map(&:name).join(',')]
       end
