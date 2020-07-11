@@ -2,6 +2,7 @@ import Rails from "@rails/ujs"
 import { Application } from 'stimulus'
 import { definitionsFromContext } from 'stimulus/webpack-helpers'
 import '@stimulus/polyfills'
+import 'lazysizes'
 
 import "./css/application.scss"
 

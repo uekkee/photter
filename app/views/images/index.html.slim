@@ -28,7 +28,7 @@
             td.has-text-right = image.id
             td
               figure.image.is-1by1
-                img.js-image.center-cropped src="#{image.url}"
+                img.lazyload.center-cropped data-src="#{image.url}"
             td
               .container.tags.are-medium.my-2
                 - image.tags.each do |tag|
