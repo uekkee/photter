@@ -30,4 +30,19 @@ describe 'images', type: :system do
     expect(page).to have_content 'Image destroyed'
     expect(Image.count).to eq 1
   end
+
+  it 'manage tags of a image' do
+    visit images_path(q: 'dog')
+
+    click_on 'manage tags'
+
+    within('.modal-card') do
+      fill_in with: "cooldog\n"
+      click_on 'Change!'
+      expect(page).to have_content 'Succeeded! It may take a few seconds to applying to our DB'
+    end
+
+    expect(RegisterImageWithTagsJob).to have_been_enqueued
+      .with(image_url: hotdog_image.url, tag_names: %w[hotdogs cooldog])
+  end
 end

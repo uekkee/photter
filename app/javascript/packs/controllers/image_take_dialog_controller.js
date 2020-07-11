@@ -14,13 +14,20 @@ export default class ImageTakeDialogController extends Controller {
     this.element.classList.add('is-active')
   }
 
+  applySuccessCallback(func) {
+    this._successCallback = func
+  }
+
   pushImageUrls(imageUrls) {
     this.imageUrls = imageUrls
     imageUrls.forEach((imageUrl) => this.buildImage(imageUrl))
   }
 
   enterTag() {
-    const tagName = this.tagInputTarget.value
+    this.pushTag(this.tagInputTarget.value)
+  }
+
+  pushTag(tagName) {
     if (tagName) {
       this.buildTag(tagName)
       this.tagInputTarget.value = ''
@@ -35,7 +42,8 @@ export default class ImageTakeDialogController extends Controller {
       .then(() => {
         this.showNotification('Succeeded! It may take a few seconds to applying to our DB')
         setTimeout(() => {
-          this.close()
+          if (this._successCallback) this._successCallback()
+          else this.close()
         }, 3000)
       })
       .catch(() => {
@@ -52,6 +60,7 @@ export default class ImageTakeDialogController extends Controller {
   close() {
     this.element.classList.remove('is-active')
     this.imageListParentTarget.textContent = ''
+    this.tagListParentTarget.textContent = ''
   }
 
   get tags() {

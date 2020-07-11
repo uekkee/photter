@@ -1,11 +1,11 @@
 #take-modal.modal.px-2.py-2[
   data-controller="image-take-dialog"
-  data-target="image-list.takeModal"
+  data-target=local_assigns[:target]
   ]
   .modal-background data-action="click->image-take-dialog#close"
   .modal-card
     .modal-card-head
-      p.modal-card-title Take image-URL(s) into DB
+      p.modal-card-title = local_assigns[:title] || 'Take image-URL(s) into DB'
     .modal-card-body
       .container.my-2
         strong You choose image(s) below
@@ -36,5 +36,4 @@
       .container.has-text-centered
         button.button.is-primary.is-medium[
          data-target="image-take-dialog.submitButton" data-action="click->image-take-dialog#submit"
-        ]
-          | Take!
+        ] = local_assigns[:button_label] || 'Take!'
