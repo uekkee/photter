@@ -9,7 +9,7 @@ describe BulkRegisterImagesController, type: :controller do
     let(:params) do
       {
         image_urls: [image_url],
-        tag_names: tag_names
+        tag_names: tag_names,
       }
     end
     let(:image_url) { 'https://localhost.localdomain/cat.jpg' }
