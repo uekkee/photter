@@ -1,3 +1,14 @@
+ruby:
+  active_class = 'is-active'
+  case yield(:active_tab)
+  when 'images'
+    images_class = active_class
+  when 'tags'
+    tags_class = active_class
+  else
+    search_images_class = active_class
+  end
+
 doctype html
 html
   head
@@ -16,12 +27,12 @@ html
     navbar
       .tabs
         ul
-          li
-            a Search Images
-          li
-            a Manage DB Images
-          li
-            a Manage Tags
+          li class=search_images_class
+            = link_to 'Search Images', image_searches_path
+          li class=images_class
+            = link_to 'Manage DB Images', images_path
+          li class=tags_class
+            = link_to 'Manage Tags', tags_path
 
     section
       = yield

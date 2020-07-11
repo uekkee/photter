@@ -3,6 +3,7 @@
 class ImagesController < ApplicationController
   def index
     @images = match_images
+              .order(:id)
               .preload(:tags)
               .page(params[:page])
   end
