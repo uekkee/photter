@@ -6,8 +6,14 @@
 [![Photter demo](http://img.youtube.com/vi/NYZpJHSPhPU/0.jpg)](http://www.youtube.com/watch?v=NYZpJHSPhPU "Photter demo")
 
 You can see the DEMO MOVIE by clicking image above!
+
+## What's Photter?
+
+- Search images via [Unsplash](https://unsplash.com/) API
+- Save image urls to local DB with Tags
+- Download image urls CSV with Tag
  
-## Overview
+## System overview
 
 - Required languages and Packaging frameworks
   - Ruby: 2.7.1+
@@ -66,7 +72,7 @@ unsplash:
 
 ### [optional] enable VCR on development
 
-Rate limit of unsplash API(demo) is very low.
+Rate limit of unsplash API(demo) is [VERY LOW](https://unsplash.com/documentation#rate-limiting).
 So it's convenient to use VCR for development.
 (VCR records API response and caches to file)
 
