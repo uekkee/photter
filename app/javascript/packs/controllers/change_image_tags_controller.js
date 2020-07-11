@@ -15,7 +15,7 @@ export default class ChangeImageTagsController extends Controller {
   }
 
   get imageTakeDialogController() {
-    const modalElement = document.getElementById('take-modal')
-    return this.application.getControllerForElementAndIdentifier(modalElement, 'image-take-dialog')
+    const dialogElement = document.getElementById('take-dialog')
+    return this.application.getControllerForElementAndIdentifier(dialogElement, 'image-take-dialog')
   }
 }
