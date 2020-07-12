@@ -1,14 +1,14 @@
 import ImagesFetcher from 'packs/models/images_fetcher'
 
-describe('ImagesFetcher', ()=> {
-  describe('#fetchNext and #hasNext', ()=> {
+describe('ImagesFetcher', () => {
+  describe('#fetchNext and #hasNext', () => {
     const query = 'dog'
     let imagesFetcher
     const imagesJson = [
       {
         thumbnail_url: 'https://localhost.localdomain/dog_thumb.jpg',
         image_url: 'https://localhost.localdomain/dog.jpg',
-      }
+      },
     ]
     const oneTotalPageJson = {
       total_pages: 1,
@@ -23,11 +23,11 @@ describe('ImagesFetcher', ()=> {
       imagesFetcher = new ImagesFetcher(query)
     })
 
-    it ('defaultHasNext is true', ()=> {
+    it('defaultHasNext is true', () => {
       expect(imagesFetcher.hasNext).toBe(true)
     })
 
-    it('fetch success with one total page', ()=>{
+    it('fetch success with one total page', () => {
       fetch.mockResponse(JSON.stringify(oneTotalPageJson), { status: 200 })
       imagesFetcher.fetchNext()
         .then((json) => {
@@ -36,7 +36,7 @@ describe('ImagesFetcher', ()=> {
         })
     })
 
-    it('fetch success with two total pages', ()=>{
+    it('fetch success with two total pages', () => {
       fetch.mockResponse(JSON.stringify(twoTotalPagesJson), { status: 200 })
       imagesFetcher.fetchNext()
         .then((json) => {
@@ -45,7 +45,7 @@ describe('ImagesFetcher', ()=> {
         })
     })
 
-    it('fetch error', ()=>{
+    it('fetch error', () => {
       fetch.mockResponse('', { status: 422 })
       imagesFetcher.fetchNext()
         .catch((error) => {

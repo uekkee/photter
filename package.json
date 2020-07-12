@@ -46,7 +46,7 @@
       "app/javascript"
     ],
     "setupFiles": [
-      "./app/javascript/tests/setup_jest.js"
+      "./app/javascript/tests/setupJest.js"
     ],
     "testEnvironment": "jest-environment-jsdom-fourteen",
     "testMatch": [
