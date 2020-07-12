@@ -25,6 +25,32 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.20.0",
     "jest": "^26.0.1",
+    "jest-environment-jsdom-fourteen": "^1.0.1",
+    "jest-fetch-mock": "^3.0.3",
     "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "automock": false,
+    "clearMocks": true,
+    "moduleDirectories": [
+      "app/javascript",
+      "node_modules"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less)$": "tests/__mocks__/styleMock.js"
+    },
+    "roots": [
+      "app/javascript"
+    ],
+    "setupFiles": [
+      "./app/javascript/tests/setupJest.js"
+    ],
+    "testEnvironment": "jest-environment-jsdom-fourteen",
+    "testMatch": [
+      "**/?(*.)+(spec|test).[jt]s?(x)"
+    ]
   }
 }

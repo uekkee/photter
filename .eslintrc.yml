@@ -4,6 +4,7 @@ env:
   browser: true
   es6: true
   jquery: true
+  jest: true
 parser: babel-eslint
 rules:
   semi: 0
