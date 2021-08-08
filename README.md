@@ -17,7 +17,7 @@ You can see the DEMO MOVIE by clicking image above!
 ## System overview
 
 - Required languages and Packaging frameworks
-  - Ruby: 2.7.1+
+  - Ruby: 3.0.2+
   - Bundler: 2.1.4  
   - Node: 12.x
   - yarn: 1.22.4+
