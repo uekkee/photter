@@ -8,10 +8,6 @@ module Shoulda
       end
 
       class ValidateUrlOfMatcher < ValidationMatcher
-        def initialize(attribute)
-          super
-        end
-
         def matches?(subject)
           super(subject)
           allows_value_of 'http://localhost.localdomain'

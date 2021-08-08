@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.3'
+gem 'rails', '~> 6.1.4'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4'
 # Use Puma as the app server
@@ -58,7 +58,8 @@ group :development do
   gem 'pronto-scss', require: false
   gem 'pronto-slim_lint', require: false
   # TODO: fix ref if released: https://github.com/flyerhzm/rails_best_practices/pull/379
-  gem 'rails_best_practices', github: 'flyerhzm/rails_best_practices', ref: '22bffacca75edc102eaa459dffad5fd97e2ae159', require: false
+  gem 'rails_best_practices', github: 'flyerhzm/rails_best_practices', ref: '22bffacca75edc102eaa459dffad5fd97e2ae159',
+                              require: false
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
   gem 'spring'

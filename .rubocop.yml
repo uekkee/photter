@@ -34,8 +34,22 @@ Lint/RaiseException:
 Lint/StructNewOverride:
   Enabled: true
 
+Metrics/AbcSize:
+  Exclude:
+    - "config/**/*"
+
 Metrics/BlockLength:
   Exclude:
+    - "config/**/*"
+    - "spec/**/*"
+
+Metrics/MethodLength:
+  Exclude:
+    - "config/**/*"
+
+Naming/VariableNumber:
+  Exclude:
+    - "config/**/*"
     - "spec/**/*"
 
 Style/ClassAndModuleChildren:
