@@ -58,7 +58,8 @@ group :development do
   gem 'pronto-scss', require: false
   gem 'pronto-slim_lint', require: false
   # TODO: fix ref if released: https://github.com/flyerhzm/rails_best_practices/pull/379
-  gem 'rails_best_practices', github: 'flyerhzm/rails_best_practices', ref: '22bffacca75edc102eaa459dffad5fd97e2ae159', require: false
+  gem 'rails_best_practices', github: 'flyerhzm/rails_best_practices', ref: '22bffacca75edc102eaa459dffad5fd97e2ae159',
+                              require: false
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
   gem 'spring'
