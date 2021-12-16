@@ -1,6 +1,8 @@
 name: Pronto
 on: [pull_request]
-
+permissions:
+  pull-requests: write
+  statuses: write
 jobs:
   pronto:
 
