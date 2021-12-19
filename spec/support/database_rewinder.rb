@@ -6,6 +6,7 @@ RSpec.configure do |config|
   end
 
   config.after(:each) do
-    DatabaseRewinder.clean
+    # TODO: fix database_rewinder works well on Rails 7
+    DatabaseRewinder.clean_all
   end
 end
