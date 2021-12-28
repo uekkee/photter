@@ -35,7 +35,7 @@ describe 'images', type: :system do
     end
 
     expect(RegisterImageWithTagsJob).to have_been_enqueued
-      .with(image_url: expected_image_url, tag_names: tag_names)
+      .with(image_url: expected_image_url, tag_names:)
   end
 
   it 'search images and register images' do

@@ -9,7 +9,7 @@ describe BulkRegisterImagesController, type: :controller do
     let(:params) do
       {
         image_urls: [image_url],
-        tag_names: tag_names,
+        tag_names:,
       }
     end
     let(:image_url) { 'https://localhost.localdomain/cat.jpg' }
@@ -17,7 +17,7 @@ describe BulkRegisterImagesController, type: :controller do
 
     it do
       expect { subject }.to have_enqueued_job(RegisterImageWithTagsJob)
-        .with(image_url: image_url, tag_names: tag_names)
+        .with(image_url:, tag_names:)
       expect(subject).to have_http_status :no_content
     end
   end

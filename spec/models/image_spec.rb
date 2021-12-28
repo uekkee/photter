@@ -44,7 +44,7 @@ describe Image, type: :model do
   end
 
   describe '.register_with_tag_names' do
-    subject { Image.register_with_tag_names image_url: image_url, tag_names: tag_names }
+    subject { Image.register_with_tag_names image_url:, tag_names: }
 
     let(:image_url) { 'https://localhost.localdomain/dog.jpg' }
     let(:tag_names) { %w[cat cool kitty] }

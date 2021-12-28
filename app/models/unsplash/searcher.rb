@@ -18,13 +18,13 @@ class Unsplash::Searcher
   private
 
   def build_result_object(search_result)
-    OpenStruct.new(
-      {
+    Struct.new(:total, :total_pages, :images, keyword_init: true).yield_self do |struct|
+      struct.new(
         total: search_result&.total || 0,
         total_pages: search_result&.total_pages || 0,
         images: search_result&.map { |result| parse_single_result result } || [],
-      },
-    )
+      )
+    end
   end
 
   def search_from_unsplash
