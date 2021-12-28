@@ -4,7 +4,7 @@ require 'rails_helper'
 
 describe TagsController, type: :controller do
   describe '#index' do
-    subject { get :index, params: params }
+    subject { get :index, params: }
 
     context 'without page' do
       let(:params) { {} }
@@ -28,7 +28,7 @@ describe TagsController, type: :controller do
   end
 
   describe '#destroy' do
-    subject { delete :destroy, params: { id: id } }
+    subject { delete :destroy, params: { id: } }
 
     context 'tag exists' do
       let(:tag) { create :tag }

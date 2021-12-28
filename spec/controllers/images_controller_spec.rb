@@ -4,7 +4,7 @@ require 'rails_helper'
 
 describe ImagesController, type: :controller do
   describe '#index' do
-    subject { get :index, params: params }
+    subject { get :index, params: }
 
     context 'with query' do
       let(:params) { { q: 'dog cat' } }
@@ -49,7 +49,7 @@ describe ImagesController, type: :controller do
 
     context 'csv' do
       let(:params) { { format: :csv } }
-      let!(:image) { create :image, tags: tags }
+      let!(:image) { create :image, tags: }
       let(:tags) { create_list :tag, 2 }
 
       it do
@@ -65,7 +65,7 @@ describe ImagesController, type: :controller do
   end
 
   describe '#destroy' do
-    subject { delete :destroy, params: { id: id } }
+    subject { delete :destroy, params: { id: } }
 
     context 'image exists' do
       let(:image) { create :image }

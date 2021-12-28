@@ -7,8 +7,8 @@ module ExternalApiRecordAndMockable
     around_action :with_vcr if vcr_enabled?
   end
 
-  def with_vcr(&block)
-    VCR.use_cassette 'default', &block
+  def with_vcr(&)
+    VCR.use_cassette 'default', &
   end
 
   module ClassMethods

@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe RegisterImageWithTagsJob, type: :job do
-  subject { RegisterImageWithTagsJob.perform_now(image_url: image_url, tag_names: tag_names) }
+  subject { RegisterImageWithTagsJob.perform_now(image_url:, tag_names:) }
 
   let(:image_url) { 'https://localhost.localdomain/fat_dog.png' }
   let(:tag_names) { %w[dog fat] }

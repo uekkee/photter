@@ -3,7 +3,7 @@
 class BulkRegisterImagesController < ApplicationController
   def create
     create_params[:image_urls].each do |image_url|
-      RegisterImageWithTagsJob.perform_later image_url: image_url, tag_names: create_params[:tag_names]
+      RegisterImageWithTagsJob.perform_later image_url:, tag_names: create_params[:tag_names]
     end
   end
 

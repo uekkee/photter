@@ -4,7 +4,7 @@ require 'rails_helper'
 
 describe 'resources images', type: :request do
   describe '#index' do
-    subject { get api_images_path, params: { q: q, page: 1 } }
+    subject { get api_images_path, params: { q:, page: 1 } }
 
     around do |example|
       VCR.use_cassette 'photos' do
