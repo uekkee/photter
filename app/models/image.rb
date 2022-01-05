@@ -10,10 +10,6 @@ class Image < ApplicationRecord
     self.tags = tag_names.map { |tag_name| Tag.find_or_initialize_by(name: tag_name) }
   end
 
-  def untested_method
-    'hello world'
-  end
-
   class << self
     def register_with_tag_names(image_url:, tag_names: [])
       image = find_or_initialize_by(url: image_url)
