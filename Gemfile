@@ -70,5 +70,8 @@ group :test do
   gem 'database_rewinder'
   gem 'rails-controller-testing'
   gem 'shoulda-matchers'
+  gem 'simplecov', require: false
+  gem 'simplecov-lcov', require: false
+  gem 'undercover'
   gem 'webdrivers'
 end
