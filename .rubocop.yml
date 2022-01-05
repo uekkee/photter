@@ -13,6 +13,7 @@ AllCops:
     - "node_modules/**/*"
     - "public/**/*"
     - "vendor/**/*"
+    - ".github/**/*"
 
 Layout/EmptyLinesAroundAttributeAccessor:
   Enabled: true

@@ -13,7 +13,11 @@ on:
 jobs:
   rspec:
     runs-on: ubuntu-latest
-
+    strategy:
+      fail-fast: false
+      matrix:
+        ci_node_total: [2]
+        ci_node_index: [0, 1]
     services:
       mysql:
         image: mysql:8
@@ -78,10 +82,13 @@ jobs:
 
       - name: Run rspec
         run: |
-          bin/rspec
+          .github/execute_rspec_for_each_node
         env:
           RAILS_ENV: test
           HEADLESS_E2E: 1
+          CI: true
+          CI_NODE_TOTAL: ${{ matrix.ci_node_total }}
+          CI_NODE_INDEX: ${{ matrix.ci_node_index }}
 
       - name: Archive rspec result screenshots
         if: failure()
