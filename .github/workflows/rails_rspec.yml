@@ -96,3 +96,60 @@ jobs:
         with:
           name: rspec result screenshots
           path: tmp/screenshots
+
+      - name: move coverage resultset
+        run: |
+          mkdir -p ./cov
+          mv coverage/.resultset.json cov/.resultset-${{ matrix.ci_node_index }}.json
+
+      - name: Archive coverage resultset
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage_resultset_${{ matrix.ci_node_index }}
+          path: ./cov
+
+  analyse-coverage:
+    runs-on: ubuntu-latest
+    needs: rspec
+    if: github.ref != 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+
+      - name: Cache bundle directory
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gem-${{ hashFiles('.ruby-version') }}-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gem-${{ hashFiles('.ruby-version') }}-
+
+      - name: Install dependencies
+        run: |
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+
+      - name: make coverage dir
+        run: |
+          mkdir -p ./cov
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: coverage_resultset_0
+          path: ./cov
+      - uses: actions/download-artifact@v2
+        with:
+          name: coverage_resultset_1
+          path: ./cov
+
+      - name: concatenate coverage report
+        run: |
+          bundle exec ruby .github/result_merger.rb
+
+      - name: analyse coverage report
+        run: |
+          bundle exec undercover --lcov ./cov/all.lcov --compare origin/master
