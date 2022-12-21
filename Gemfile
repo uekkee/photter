@@ -49,7 +49,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'foreman'
   gem 'pronto', require: false
-  gem 'pronto-eslint_npm', require: false
   gem 'pronto-scss', require: false
   gem 'rails_best_practices', require: false
   gem 'reek', require: false

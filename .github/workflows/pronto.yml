@@ -61,3 +61,6 @@ jobs:
 
       - name: run slim-lint
         run: bundle exec slim-lint app/views
+
+      - name: run eslint
+        run: yarn eslint
