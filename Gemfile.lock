@@ -222,9 +222,6 @@ GEM
       rexml (~> 3.2)
       rugged (>= 0.23.0, < 1.1.0)
       thor (>= 0.20.3, < 2.0)
-    pronto-brakeman (0.11.1)
-      brakeman (>= 3.2.0)
-      pronto (~> 0.11.0)
     pronto-eslint_npm (0.11.0)
       pronto (~> 0.11.0)
     pronto-rails_best_practices (0.11.0)
@@ -429,6 +426,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.4.2)
+  brakeman
   bullet
   byebug
   capybara
@@ -441,7 +439,6 @@ DEPENDENCIES
   matrix
   mysql2 (>= 0.4.4)
   pronto
-  pronto-brakeman
   pronto-eslint_npm
   pronto-rails_best_practices
   pronto-reek
