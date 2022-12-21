@@ -9,4 +9,4 @@
 - aria_label = page.current? ? "Page #{page}" : "Goto page #{page}"
 - link_class = "pagination-link#{' is-current' if page.current?}"
 li
-  = link_to page, url, { remote: remote, rel: page.rel, class: link_class, 'aria-label': aria_label }
+  = link_to page, url, { remote:, rel: page.rel, class: link_class, 'aria-label': aria_label }
