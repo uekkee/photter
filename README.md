@@ -2,7 +2,7 @@
 
 [![ruby](https://github.com/uekkee/photter/workflows/ruby/badge.svg)](https://github.com/uekkee/photter/actions)
 [![Jest](https://github.com/uekkee/photter/workflows/Jest/badge.svg)](https://github.com/uekkee/photter/actions)
-[![pronto](https://github.com/uekkee/photter/workflows/Pronto/badge.svg)](https://github.com/uekkee/photter/actions)
+[![lint](https://github.com/uekkee/photter/workflows/lint/badge.svg)](https://github.com/uekkee/photter/actions)
 
 [![Photter demo](http://img.youtube.com/vi/NYZpJHSPhPU/0.jpg)](http://www.youtube.com/watch?v=NYZpJHSPhPU "Photter demo")
 
