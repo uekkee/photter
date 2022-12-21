@@ -51,11 +51,11 @@ group :development do
   gem 'pronto', require: false
   gem 'pronto-eslint_npm', require: false
   gem 'pronto-scss', require: false
-  gem 'pronto-slim_lint', require: false
   gem 'rails_best_practices', require: false
   gem 'reek', require: false
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
+  gem 'slim_lint', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
