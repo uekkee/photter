@@ -1,10 +1,10 @@
-name: Pronto
+name: lint
 on: [pull_request]
 permissions:
   pull-requests: write
   statuses: write
 jobs:
-  pronto:
+  lint:
 
     runs-on: ubuntu-latest
 
