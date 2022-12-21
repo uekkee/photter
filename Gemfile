@@ -50,7 +50,6 @@ group :development do
   gem 'foreman'
   gem 'pronto', require: false
   gem 'pronto-eslint_npm', require: false
-  gem 'pronto-rubocop', require: false
   gem 'pronto-scss', require: false
   gem 'pronto-slim_lint', require: false
   gem 'rails_best_practices', require: false
