@@ -52,3 +52,6 @@ jobs:
 
       - name: run brakeman
         run: bundle exec brakeman -A -w1
+
+      - name: run rails_best_practices
+        run: bundle exec rails_best_practices .
