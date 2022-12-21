@@ -42,22 +42,17 @@ end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
+  gem 'brakeman', require: false
   gem 'bullet'
   gem 'listen', '~> 3.2'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'foreman'
-  gem 'pronto', require: false
-  gem 'pronto-brakeman', require: false
-  gem 'pronto-eslint_npm', require: false
-  gem 'pronto-rails_best_practices', require: false
-  gem 'pronto-reek', require: false
-  gem 'pronto-rubocop', require: false
-  gem 'pronto-scss', require: false
-  gem 'pronto-slim_lint', require: false
   gem 'rails_best_practices', require: false
+  gem 'reek', require: false
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
+  gem 'slim_lint', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end

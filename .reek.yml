@@ -1,3 +1,14 @@
 detectors:
   IrresponsibleModule:
     enabled: false
+
+exclude_paths:
+  - app/controllers/concerns/external_api_record_and_mockable.rb
+  - config/initializers/vcr.rb
+  - db/migrate
+  - spec
+  # disable once
+  - app/controllers/images_controller.rb
+  - app/jobs/register_image_with_tags_job.rb
+  - app/models/unsplash/searcher.rb
+  - app/models/url_validator.rb

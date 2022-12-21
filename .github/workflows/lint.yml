@@ -1,10 +1,10 @@
-name: Pronto
+name: lint
 on: [pull_request]
 permissions:
   pull-requests: write
   statuses: write
 jobs:
-  pronto:
+  lint:
 
     runs-on: ubuntu-latest
 
@@ -44,8 +44,20 @@ jobs:
           bundle install --jobs 4 --retry 3
           yarn install
 
-      - name: Run Pronto
-        run: bundle exec pronto run -f github_status github_pr -c origin/${{ github.base_ref }}
-        env:
-          PRONTO_PULL_REQUEST_ID: ${{ github.event.pull_request.number }}
-          PRONTO_GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: run rubocop
+        run: bundle exec rubocop -A
+
+      - name: run brakeman
+        run: bundle exec brakeman -A -w1
+
+      - name: run rails_best_practices
+        run: bundle exec rails_best_practices .
+
+      - name: run reek
+        run: bundle exec reek
+
+      - name: run slim-lint
+        run: bundle exec slim-lint app/views
+
+      - name: run eslint
+        run: yarn eslint
