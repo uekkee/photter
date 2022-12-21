@@ -44,12 +44,6 @@ jobs:
           bundle install --jobs 4 --retry 3
           yarn install
 
-      - name: Run Pronto
-        run: bundle exec pronto run -f github_status github_pr -c origin/${{ github.base_ref }}
-        env:
-          PRONTO_PULL_REQUEST_ID: ${{ github.event.pull_request.number }}
-          PRONTO_GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: run rubocop
         run: bundle exec rubocop -A
 
