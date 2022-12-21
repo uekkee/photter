@@ -55,3 +55,6 @@ jobs:
 
       - name: run rails_best_practices
         run: bundle exec rails_best_practices .
+
+      - name: run reek
+        run: bundle exec reek
