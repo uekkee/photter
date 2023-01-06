@@ -28,18 +28,18 @@ jobs:
           TZ: Asia/Tokyo
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
 
       - name: Use Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: '16.x'
 
       - name: Cache bundle directory
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-gem-${{ hashFiles('.ruby-version') }}-${{ hashFiles('**/Gemfile.lock') }}
@@ -47,7 +47,7 @@ jobs:
             ${{ runner.os }}-gem-${{ hashFiles('.ruby-version') }}-
 
       - name: Cache node modules
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('yarn.lock') }}
@@ -92,7 +92,7 @@ jobs:
 
       - name: Archive rspec result screenshots
         if: failure()
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: rspec result screenshots
           path: tmp/screenshots
@@ -103,7 +103,7 @@ jobs:
           mv coverage/.resultset.json cov/.resultset-${{ matrix.ci_node_index }}.json
 
       - name: Archive coverage resultset
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: coverage_resultset_${{ matrix.ci_node_index }}
           path: ./cov
@@ -113,7 +113,7 @@ jobs:
     needs: rspec
     if: github.ref != 'refs/heads/master'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
@@ -121,7 +121,7 @@ jobs:
         uses: ruby/setup-ruby@v1
 
       - name: Cache bundle directory
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-gem-${{ hashFiles('.ruby-version') }}-${{ hashFiles('**/Gemfile.lock') }}
@@ -137,11 +137,11 @@ jobs:
         run: |
           mkdir -p ./cov
 
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: coverage_resultset_0
           path: ./cov
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: coverage_resultset_1
           path: ./cov
@@ -158,13 +158,13 @@ jobs:
     runs-on: ubuntu-latest
     needs: rspec
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
 
       - name: Cache bundle directory
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-gem-${{ hashFiles('.ruby-version') }}-${{ hashFiles('**/Gemfile.lock') }}
@@ -180,11 +180,11 @@ jobs:
         run: |
           mkdir -p ./cov
 
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: coverage_resultset_0
           path: ./cov
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: coverage_resultset_1
           path: ./cov
@@ -194,7 +194,7 @@ jobs:
           bundle exec ruby -e "require 'simplecov'; SimpleCov.collate Dir['./cov/.resultset*.json'], 'rails'"
 
       - name: Archive coverage report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: coverage_report
           path: ./coverage
