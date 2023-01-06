@@ -18,8 +18,8 @@ You can see the DEMO MOVIE by clicking image above!
 
 - Required languages and Packaging frameworks
   - Ruby: 3.2.0+
-  - Node: 16.x
-  - yarn: 1.22.4+
+  - Node: 18.x
+  - yarn: 1.22.19+
 
 - System dependencies
   - Docker (Every middlewares run with docker-compose!)
