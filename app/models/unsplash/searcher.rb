@@ -18,7 +18,7 @@ class Unsplash::Searcher
   private
 
   def build_result_object(search_result)
-    Struct.new(:total, :total_pages, :images, keyword_init: true).yield_self do |struct|
+    Struct.new(:total, :total_pages, :images, keyword_init: true).then do |struct|
       struct.new(
         total: search_result&.total || 0,
         total_pages: search_result&.total_pages || 0,
